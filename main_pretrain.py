@@ -67,7 +67,7 @@ def get_args_parser():
                         help='Gradient clip')
 
     # Dataset parameters
-    parser.add_argument('--data_path', default='./data/imagenet', type=str,
+    parser.add_argument('--data_path', default='/media/data1/wjy/dataset/imagenet-o/', type=str,
                         help='dataset path')
 
     parser.add_argument('--output_dir', default='./output_dir',
@@ -119,7 +119,8 @@ def main(args):
             transforms.RandomResizedCrop(args.input_size, scale=(0.2, 1.0)),
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor()])
-    dataset_train = datasets.ImageFolder(os.path.join(args.data_path, 'train'), transform=transform_train)
+    # dataset_train = datasets.ImageFolder(os.path.join(args.data_path, 'train'), transform=transform_train)
+    dataset_train = datasets.ImageFolder(os.path.join(args.data_path), transform=transform_train)
     print(dataset_train)
 
     if True:  # args.distributed:
@@ -147,7 +148,7 @@ def main(args):
     )
     
     # define the model
-    vqgan_ckpt_path = 'vqgan_jax_strongaug.ckpt'
+    vqgan_ckpt_path = 'pre_trained_pth/vqgan_jax_strongaug.ckpt'
 
     model = models_mage.__dict__[args.model](mask_ratio_mu=args.mask_ratio_mu, mask_ratio_std=args.mask_ratio_std,
                                              mask_ratio_min=args.mask_ratio_min, mask_ratio_max=args.mask_ratio_max,

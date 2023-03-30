@@ -1,0 +1,29 @@
+.exps/
+.pre_trained_pth/
+
+# Pycharm
+.idea/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+/pm2.json
+/millionaid_train_shape.csv
+/combine_millionaid.py
+/exps/
+/pre_trained_pth/
